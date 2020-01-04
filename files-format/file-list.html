@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>文件格式</title>
+  <script src="../static/js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <a :href="item.fileUrl" v-for="item in fileList">
+    <img :src="getFormat(item.fileUrl)" alt="">
+    <p>{{item.fileName}}</p>
+  </a>
+</div>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      fileList: [
+        {
+          fileUrl: '/static/file/cbubjbjk.doc',
+          fileName: '我的简历.doc'
+        },
+        {
+          fileUrl: '/static/file/dvvbnbgfn.docx',
+          fileName: '2019简历.docx'
+        },
+        {
+          fileUrl: '/static/file/vdbgfn.pdf',
+          fileName: '最新简历.pdf'
+        },
+      ]
+    },
+    methods:{
+      getFormat(url) { //判断格式
+        if(url.search('.docx') !=-1 || url.search('.doc') != -1){
+          return "../static/img/file-word.png"
+        }else if(url.search('.pdf') != -1){
+          return "../static/img/file-pdf.png"
+        }else{
+          return "../static/img/file-word.png"
+        }
+      },
+    }
+  })
+</script>
+<style scoped>
+  img{
+    width: 120px;
+  }
+  a{
+    float: left;
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+    margin: 15px;
+  }
+</style>
+</body>
+</html>
