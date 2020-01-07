@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../static/js/vue.js"></script>
+</head>
+<body>
+<div id="App">
+  <user username="www.w3h5.com"></user>
+</div>
+
+<script>
+  Vue.component('user', {
+    template: `<div @click="onClick">我的网站</div>`,
+    props: ['username'], //传的值,这里的 username 与父元素标签的属性对应
+    methods: {
+      onClick() {//点击,弹出 props 穿过来的 username 的值
+        alert(this.username)
+      },
+    },
+  })
+  new Vue({
+    el: "#App",
+  });
+</script>
+</body>
+</html>
